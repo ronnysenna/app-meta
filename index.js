@@ -1,14 +1,18 @@
-// let mensagem = "Deus no comando"
-// const num = 10
-// console.log(mensagem);
-// console.log(num);
+const start = () => {
 
-// let metas = ["Ronny","Senna"]
-// console.log(metas[0]  + " " +  metas[1])
-
-let meta = {
-    value : "Ler um livro",
-    Checked: false
+    while(true){
+        let opcao = "Sair"
+            switch(opcao){
+                case "Cadastrar":
+                    console.log("Fazer o Cadastro")
+                    break
+                 case "Listar":
+                    console.log("Listar cadastros")
+                    break
+                  case "Sair":
+                    return
+            }
+    }
 }
 
-console.log(meta.value)
+start()
