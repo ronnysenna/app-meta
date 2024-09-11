@@ -1,87 +1,88 @@
 const { select, input, checkbox } = require('@inquirer/prompts')
 
-let meta ={
-    value: "Tomar 3l de Agua por dia",
-    checked: false
+let meta = {
+    value: 'Tomar 3L de água por dia',
+    checked: false,
 }
+
 let metas = [ meta ]
 
 const cadastrarMeta = async () => {
+    const meta = await input({ message: "\n\t Digite sua Meta:"})
 
-    const meta = await input({menssage:"Digite sua Meta"})
-        if (meta.length == 0){
-            console.log("A meta não pode está vazia. ")
-            return
+    if(meta.length == 0) {
+        console.log('\n\t A meta não pode ser vazia.')
+        return
     }
 
-    metas.push({
-        value:meta, 
-        checked: false
-    })
+    metas.push(
+        { value: meta, checked: false }
+    )
 }
 
-const listarMeta = async () => {
-
+const listarMetas = async () => {
     const respostas = await checkbox({
-        message: "\n Use as setas para mudar de meta, e o espaço para marcar ou desmarcar e o ENTER par finalizar essa etapa",
+        message: "Use as setas para mudar de meta, o espaço para marcar ou desmarcar e o Enter para finalizar essa etapa",
         choices: [...metas],
         instructions: false,
     })
 
-    if (respostas.length == 0){
-        console.log("\n Nenhuma meta selecionada! ")
+    if(respostas.length == 0) {
+        console.log("\n\t Nenhuma meta selecionada!")
         return
-    } 
+    }
 
-    meta.forEach((meta2) => {
-        meta2,checkbox = false
-    })
-    
-    respostas.forEach((resposta) =>{
-            const meta = metas.find((meta2) => {
-                return meta2.value == resposta
-            })
-
-            meta.checked = true
+    metas.forEach((m) => {
+        m.checked = false
     })
 
-    console.log ("Metas(s) marcadas concluidas (s)")
+    respostas.forEach((resposta) => {
+        const meta = metas.find((m) => {
+            return m.value == resposta
+        })
+
+        meta.checked = true
+    })
+
+    console.log('\n\t Meta(s) marcadas como concluída(s)')
+
 }
 
-const start = async () => {
 
-    while (true) {
+const start = async () => {
+    while(true){
+        
         const opcao = await select({
-            menssage: "\t ==== Menu ==== \n",
-            choices: [{
-                name: "CADASTRAR METAS",
-                value: "cadastrar"
-            },
-            {
-                name: "LISTAR METAS",
-                value: "listar"
-            },
-            {
-                name: "SAIR",
-                value: "sair"
-            }
+            message: "\n\t === MENU === >",
+            choices: [
+                {
+                    name: "\n\t CADASTRAR META",
+                    value: "cadastrar"
+                },
+                {
+                    name: "\t LISTAR METAS",
+                    value: "listar"
+                },
+                {
+                    name: "\t SAIR",
+                    value: "sair"
+                }
             ]
         })
 
-        switch (opcao) {
+        switch(opcao) {
             case "cadastrar":
                 await cadastrarMeta()
                 console.log(metas)
                 break
             case "listar":
-                await listarMeta()
-                console.log(respostas)
+                await listarMetas()
                 break
             case "sair":
-                console.log("\t==== ATÉ A PRÓXIMA ====\n")
+                console.log('\n\t ==== ATÉ A PRÓXIMA! ====')
                 return
         }
     }
 }
 
-start()
+start();
