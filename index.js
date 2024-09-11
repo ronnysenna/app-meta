@@ -157,7 +157,7 @@ const mostrarMensagem = () => {
     }
 }
 
-// Inicio Menu
+// Inicio Menu e funções
 const start = async () => {
     await carregarMetas()
 

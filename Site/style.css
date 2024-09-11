@@ -17,7 +17,7 @@ body {
 .container {
     background-color: white;
     padding: 2rem;
-    border-radius: 8px 50px;
+    border-radius: 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
@@ -29,18 +29,18 @@ h1 {
 }
 
 .menu-btn {
-    background-color: #4CAF50;
+    background-color: #0d5bc2d3;
     color: white;
     padding: 10px 20px;
     margin: 5px 0;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%;
+    width: 80%;
 }
 
 .menu-btn:hover {
-    background-color: #45a049;
+    background-color: #161616d3;
 }
 
 #new-meta {
@@ -52,16 +52,16 @@ h1 {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #0d5bc2d3;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 20px ;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #161616d3;
 }
 
 .hidden {
