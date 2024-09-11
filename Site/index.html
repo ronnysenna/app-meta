@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Metas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gerenciador de Metas</h1>
+        
+        <div id="menu">
+            <button class="menu-btn" onclick="showForm()">Cadastrar Meta</button>
+            <button class="menu-btn" onclick="showMetas()">Listar Metas</button>
+            <!-- <button class="menu-btn" onclick="sair()">Sair</button> -->
+        </div>
+
+        <div id="form-section" class="hidden">
+            <h2>Cadastrar Meta</h2>
+            <input type="text" id="new-meta" placeholder="Digite sua meta">
+            <button onclick="addMeta()">Adicionar</button>
+            <p id="error-message" class="error"></p>
+            <button class="back-btn" onclick="voltarParaMenu()">Voltar para o Menu</button>
+        </div>
+
+        <div id="meta-list-section" class="hidden">
+            <h2>Suas Metas</h2>
+            <ul id="meta-list"></ul>
+            <button class="back-btn" onclick="voltarParaMenu()">Voltar para o Menu</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
