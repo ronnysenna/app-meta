@@ -7,6 +7,7 @@ let meta = {
 
 let metas = [ meta ]
 
+    //Opçao Cadastrar Metas
 const cadastrarMeta = async () => {
     const meta = await input({ message: "\n\t Digite sua Meta:"})
 
@@ -20,6 +21,7 @@ const cadastrarMeta = async () => {
     )
 }
 
+    //Opçao Listar Metas
 const listarMetas = async () => {
     const respostas = await checkbox({
         message: "Use as setas para mudar de meta, o espaço para marcar ou desmarcar e o Enter para finalizar essa etapa",
@@ -27,14 +29,14 @@ const listarMetas = async () => {
         instructions: false,
     })
 
+    metas.forEach((m) => {
+        m.checked = false
+    })
+
     if(respostas.length == 0) {
         console.log("\n\t Nenhuma meta selecionada!")
         return
     }
-
-    metas.forEach((m) => {
-        m.checked = false
-    })
 
     respostas.forEach((resposta) => {
         const meta = metas.find((m) => {
@@ -48,8 +50,40 @@ const listarMetas = async () => {
 
 }
 
+    //Opçao Metas Realizadas
+
+const metasRealizadas = async () => {
+    const realizadas = metas.filter((meta) => {
+        return meta.checked
+    })
+
+    if (realizadas.length == 0){
+        console.log("\n\t Não existem metas Realizadas ainda!")
+        return
+    }
+    await select({
+        message:"\n\t Metas Realizadas: " + realizadas.length,
+        choices:[...realizadas]
+    })
+}
+    //Opçao Metas Abertas
+const metasAbertas = async () => {
+    const abertas = metas.filter((meta) => {
+        return meta.checked != true
+    })
+
+    if (abertas.length == 0){
+        console.log("\n\t Não existem metas em aberto !")
+        return
+    }
+    await select({
+        message:"\n\t Metas Abertas: " + abertas.length,
+        choices:[...abertas]
+    })
+}
 
 const start = async () => {
+
     while(true){
         
         const opcao = await select({
@@ -62,6 +96,14 @@ const start = async () => {
                 {
                     name: "\t LISTAR METAS",
                     value: "listar"
+                },
+                {
+                    name: "\t METAS REALIZADAS",
+                    value: "realizadas"
+                },
+                {
+                    name: "\t METAS ABERTAS",
+                    value: "abertas"
                 },
                 {
                     name: "\t SAIR",
@@ -77,6 +119,11 @@ const start = async () => {
                 break
             case "listar":
                 await listarMetas()
+            case "realizadas":
+                await metasRealizadas ()             
+                break
+            case "abertas":
+                await metasAbertas ()             
                 break
             case "sair":
                 console.log('\n\t ==== ATÉ A PRÓXIMA! ====')
