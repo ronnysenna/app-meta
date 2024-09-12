@@ -20,7 +20,7 @@ JS, React, Node.js, Fastify, Zod, Drizzle, Vite, TailwindCSS, React Query e muit
 
 ## Demonstração
  
-<p><a href="https://meuimc.vercel.app/">🔗 Veja o projeto clicando aqui !</p></a>
+<p><a href="https://app-meta.vercel.app/">🔗 Veja o projeto clicando aqui !</p></a>
 
 [ 🔗 Ou Veja um vídeo curtinho aqui](Site/Gravando.mp4)
 
